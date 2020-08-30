@@ -17,16 +17,15 @@
 array = [1, 2, 3, 4, 5]
 
 def reduce(arr, acc = 0)
-    first_ele = arr[0]
 
+    first_ele = arr[0]
     acc = first_ele.class.new unless first_ele.is_a? Integer
+
     arr.each do |n|
 
       acc = yield(acc, n)
     end
     acc
-
-
 end
 
 p reduce(array) { |acc, num| acc + num }                    # => 15
