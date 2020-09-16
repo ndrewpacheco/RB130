@@ -51,6 +51,35 @@ in order to avoid this, we can use the method `block_given?` which is returns tr
 
 ### Yielding with an argument
 
+```ruby
+3.times do |num|
+  puts num
+end
+```
+The `num` variable in between the two `|` is known as a block parameter, and within the block, `num` is referred to as a block local variable.
+
+It is important that the block parameter has a unique name, in order to not cause any variable shadowing to happen. 
+
+Tracing some code line by line:
+
+```ruby
+# method implementation
+def increment(number)
+  if block_given?
+    yield(number + 1)
+  end
+  number + 1
+end
+
+# method invocation
+increment(5) do |num|
+  puts num
+end
+```
+
+1) the `increment` method is invoked on line 10
+2) We then proceed to the method implementation on line 
+
 
 
 
