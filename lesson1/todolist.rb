@@ -170,9 +170,7 @@ class TodoList
   end
 
   def mark_all_undone
-
     each {|item| item.undone!}
-
   end
 
 end
