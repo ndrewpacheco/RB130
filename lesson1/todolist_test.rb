@@ -90,6 +90,50 @@ class TodoListTest < MiniTest::Test
     assert @todo3.done?
   end
 
+  def test_done!
+    @list.done!
+    assert @todo1.done?
+    assert @todo2.done?
+    assert @todo3.done?
+  end
+
+  def test_remove_at
+#Hint: this method raises IndexError if argument does not return item.
+    assert_raises(IndexError){@list.remove_at(400)}
+    assert_equal(@todo1, @list.remove_at(0))
+    assert_equal([@todo2, @todo3], @list.to_a)
+  end
+
+
+  def test_to_s
+    output = <<-OUTPUT.chomp.gsub /^\s+/, ""
+    ---- Today's Todos ----
+    [ ] Buy milk
+    [ ] Clean room
+    [ ] Go to gym
+    OUTPUT
+
+    assert_equal(output, @list.to_s)
+  end
+
+  def test_to_s_one_done
+    @todo1.done!
+    output = <<-OUTPUT.chomp.gsub /^\s+/, ""
+    ---- Today's Todos ----
+    [X] Buy milk
+    [ ] Clean room
+    [ ] Go to gym
+    OUTPUT
+
+    assert_equal(output, @list.to_s)
+  end
+
+  def test_each
+    test_collection = []
+    @list.each {|todo| test_collection << todo }
+
+    assert_equal(test_collection, @list.to_a)
+  end
 
 
 end

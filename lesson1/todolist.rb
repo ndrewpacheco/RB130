@@ -139,14 +139,11 @@ class TodoList
   end
 
   def find_by_title(search_title)
-    #takes a string as argument,
-    # and returns the first Todo object that matches the argument.
-    #Return nil if no todo is found.
+
     result = nil
 
     selected_todos = todos.select {|todo| todo.title == search_title }
     result = selected_todos.first unless selected_todos.empty?
-    #either returns nil or  Todo Obj
     result
   end
 

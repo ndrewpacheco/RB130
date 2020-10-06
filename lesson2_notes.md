@@ -60,3 +60,14 @@ class AthleteTest < MiniTest::Test
   end
 end
 ```
+
+### Testing Equality
+
+`assert_equal` tests for value equality. This can be seen as `obj1 == obj2`
+
+`assert_same` tests for object equality. 
+
+`obj1.eql?(obj2)`
+
+
+If we create our own custom classes, we must define a `==` method in order to run assertions like `assert_equal` properly. 
